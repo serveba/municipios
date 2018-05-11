@@ -1,49 +1,37 @@
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
 
--- --------------------------------------------------------
+-- AUTONOMOUS COUNTRY TABLE
 
---
--- Estructura de tabla para la tabla `comunidades`
---
+CREATE TABLE [dbo].[AutonomousCommunity] (
+	[AutonomousCommunityID] [bigint] IDENTITY(1,1) NOT NULL,
+  [Slug] [varchar](50) NOT NULL,
+	[Description] [varchar](255) NOT NULL,
+ CONSTRAINT [PK_AutonomousCommunity] PRIMARY KEY CLUSTERED
+(
+	[AutonomousCommunityID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
-CREATE TABLE IF NOT EXISTS `comunidades` (
-  `id` int(10) unsigned NOT NULL,
-  `slug` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `comunidad` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `capital_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `IDX_cominidad` (`comunidad`),
-  UNIQUE KEY `slug` (`slug`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `comunidades`
---
+SET IDENTITY_INSERT [dbo].[AutonomousCommunity] ON
 
-INSERT INTO `comunidades` (`id`, `slug`, `comunidad`, `capital_id`) VALUES
-(1, 'andalucia', 'Andalucía', 6152),
-(2, 'aragon', 'Aragón', 8113),
-(3, 'principado-de-asturias', 'Principado de Asturias', 5009),
-(4, 'illes-balears', 'Illes Balears', 836),
-(5, 'canarias', 'Canarias', 5252),
-(6, 'cantabria', 'Cantabria', 5823),
-(7, 'castilla-y-leon', 'Castilla y León', 7415),
-(8, 'castilla-la-mancha', 'Castilla - La Mancha', 6934),
-(9, 'cataluna', 'Cataluña', 881),
-(10, 'comunitat-valenciana', 'Comunitat Valenciana', 7219),
-(11, 'extremadura', 'Extremadura', 712),
-(12, 'galicia', 'Galicia', 2198),
-(13, 'comunidad-de-madrid', 'Comunidad de Madrid ', 4356),
-(14, 'region-de-murcia', 'Región de Murcia', 4588),
-(15, 'comunidad-foral-de-navarra', 'Comunidad Foral de Navarra', 4815),
-(16, 'pais-vasco', 'País Vasco', 46),
-(17, 'la-rioja', 'La Rioja', 4124),
-(18, 'ceuta', 'Ceuta', 8115),
-(19, 'melilla', 'Melilla', 8116);
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (1, 'andalucia', 'Andalucía');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (2, 'aragon', 'Aragón')
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (3, 'principado-de-asturias', 'Principado de Asturias');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (4, 'illes-balears', 'Illes Balears');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (5, 'canarias', 'Canarias');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (6, 'cantabria', 'Cantabria');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (7, 'castilla-y-leon', 'Castilla y León');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (8, 'castilla-la-mancha', 'Castilla - La Mancha');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (9, 'cataluna', 'Cataluña');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (10, 'comunitat-valenciana', 'Comunitat Valenciana');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (11, 'extremadura', 'Extremadura');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (12, 'galicia', 'Galicia');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (13, 'comunidad-de-madrid', 'Comunidad de Madrid ');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (14, 'region-de-murcia', 'Región de Murcia');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (15, 'comunidad-foral-de-navarra', 'Comunidad Foral de Navarra');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (16, 'pais-vasco', 'País Vasco');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (17, 'la-rioja', 'La Rioja');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (18, 'ceuta', 'Ceuta');
+INSERT INTO [dbo].[AutonomousCommunity] ([AutonomousCommunityID], [Slug], [Description]) VALUES (19, 'melilla', 'Melilla');
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+SET IDENTITY_INSERT [dbo].[AutonomousCommunity] OFF;
