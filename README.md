@@ -12,3 +12,9 @@ http://www.azrodin.com/programacion/sql-con-municipios-provincias-y-comunidades-
 -- serveba
 
 Hemos realizado un fork de https://github.com/antonrodin/municipios para poder crear los mismos SQLs compatibles con SQL Server. Probados con MSSQL 2008
+
+En total salen:
+
+19 comunidades
+52 provincias
+8116 municipios
