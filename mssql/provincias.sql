@@ -1,87 +1,79 @@
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+USE Autolex;
 
---
--- Base de datos: `utiles`
---
+-- DROP TABLE [dbo].[Province];
 
--- --------------------------------------------------------
+CREATE TABLE [dbo].[Province] (
+  [ProvinceID] [bigint] IDENTITY(1,1) NOT NULL,
+  [Slug] [varchar](50) NOT NULL,
+	[Description] [varchar](255) NOT NULL,
+  [AutonomousCommunityID] [bigint] NOT NULL,
+  [CapitalID] numeric(11, 0) NOT NULL,
+ CONSTRAINT [PK_Province] PRIMARY KEY CLUSTERED
+(
+	[ProvinceID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
 
---
--- Estructura de tabla para la tabla `provincias`
---
+ALTER TABLE [dbo].[Province]  WITH CHECK ADD  CONSTRAINT [FK_Province_AutonomousCommunity] FOREIGN KEY([AutonomousCommunityID])
+REFERENCES [dbo].[AutonomousCommunity] ([AutonomousCommunityID])
+GO
 
-CREATE TABLE IF NOT EXISTS `provincias` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `slug` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `provincia` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `comunidad_id` int(10) unsigned NOT NULL,
-  `capital_id` int(11) NOT NULL DEFAULT '-1',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `IDX_provincia` (`provincia`),
-  KEY `FK_provincias` (`comunidad_id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci CHECKSUM=1 DELAY_KEY_WRITE=1 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=53 ;
 
---
--- Volcado de datos para la tabla `provincias`
---
+SET IDENTITY_INSERT [dbo].[Province] ON
 
-INSERT INTO `provincias` (`id`, `slug`, `provincia`, `comunidad_id`, `capital_id`) VALUES
-(1, 'alava', 'Álava', 16, 46),
-(2, 'albacete', 'Albacete', 8, 54),
-(3, 'alicante', 'Alicante', 10, 152),
-(4, 'almeria', 'Almería', 1, 292),
-(5, 'vila', 'Ávila', 7, 395),
-(6, 'badajoz', 'Badajoz', 11, 644),
-(7, 'illes-balears', 'Illes Balears', 4, 836),
-(8, 'barcelona', 'Barcelona', 9, 881),
-(9, 'burgos', 'Burgos', 7, 1220),
-(10, 'caceres', 'Cáceres', 11, 1580),
-(11, 'cadiz', 'Cádiz', 1, 1776),
-(12, 'castellon', 'Castellón', 10, 1844),
-(13, 'ciudad-real', 'Ciudad Real', 8, 1978),
-(14, 'cordoba', 'Córdoba', 1, 2065),
-(15, 'a-coruna', 'A Coruña', 12, 2150),
-(16, 'cuenca', 'Cuenca', 8, 2285),
-(17, 'girona', 'Girona', 9, 2526),
-(18, 'granada', 'Granada', 1, 2747),
-(19, 'guadalajara', 'Guadalajara', 8, 2947),
-(20, 'guipuzcoa', 'Guipúzcoa', 16, 3159),
-(21, 'huelva', 'Huelva', 1, 3257),
-(22, 'huesca', 'Huesca', 2, 3396),
-(23, 'jaen', 'Jaén', 1, 3545),
-(24, 'leon', 'León', 7, 3676),
-(25, 'lleida', 'Lleida', 9, 3918),
-(26, 'la-rioja', 'La Rioja', 17, 4124),
-(27, 'lugo', 'Lugo', 12, 4238),
-(28, 'madrid', 'Madrid', 13, 4356),
-(29, 'malaga', 'Málaga', 1, 4523),
-(30, 'murcia', 'Murcia', 14, 4588),
-(31, 'navarra', 'Navarra', 15, 4815),
-(32, 'ourense', 'Ourense', 12, 4925),
-(33, 'asturias', 'Asturias', 3, 5009),
-(34, 'palencia', 'Palencia', 7, 5137),
-(35, 'las-palmas', 'Las Palmas', 5, 5252),
-(36, 'pontevedra', 'Pontevedra', 12, 5312),
-(37, 'salamanca', 'Salamanca', 7, 5588),
-(38, 'santa-cruz-de-tenerife', 'Santa Cruz de Tenerife', 5, 5732),
-(39, 'cantabria', 'Cantabria', 6, 5823),
-(40, 'segovia', 'Segovia', 7, 6024),
-(41, 'sevilla', 'Sevilla', 1, 6152),
-(42, 'soria', 'Soria', 7, 6307),
-(43, 'tarragona', 'Tarragona', 9, 6499),
-(44, 'teruel', 'Teruel', 2, 6721),
-(45, 'toledo', 'Toledo', 8, 6934),
-(46, 'valencia', 'Valencia', 10, 7219),
-(47, 'valladolid', 'Valladolid', 7, 7415),
-(48, 'vizcaya', 'Vizcaya', 16, 7489),
-(49, 'zamora', 'Zamora', 7, 7821),
-(50, 'zaragoza', 'Zaragoza', 2, 8113),
-(51, 'ceuta', 'Ceuta', 18, 8115),
-(52, 'melilla', 'Melilla', 19, 8116);
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (1, 'alava', 'Álava', 16, 46);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (2, 'albacete', 'Albacete', 8, 54);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (3, 'alicante', 'Alicante', 10, 152);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (4, 'almeria', 'Almería', 1, 292);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (5, 'vila', 'Ávila', 7, 395);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (6, 'badajoz', 'Badajoz', 11, 644);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (7, 'illes-balears', 'Illes Balears', 4, 836);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (8, 'barcelona', 'Barcelona', 9, 881);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (9, 'burgos', 'Burgos', 7, 1220);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (10, 'caceres', 'Cáceres', 11, 1580);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (11, 'cadiz', 'Cádiz', 1, 1776);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (12, 'castellon', 'Castellón', 10, 1844);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (13, 'ciudad-real', 'Ciudad Real', 8, 1978);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (14, 'cordoba', 'Córdoba', 1, 2065);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (15, 'a-coruna', 'A Coruña', 12, 2150);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (16, 'cuenca', 'Cuenca', 8, 2285);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (17, 'girona', 'Girona', 9, 2526);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (18, 'granada', 'Granada', 1, 2747);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (19, 'guadalajara', 'Guadalajara', 8, 2947);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (20, 'guipuzcoa', 'Guipúzcoa', 16, 3159);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (21, 'huelva', 'Huelva', 1, 3257);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (22, 'huesca', 'Huesca', 2, 3396);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (23, 'jaen', 'Jaén', 1, 3545);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (24, 'leon', 'León', 7, 3676);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (25, 'lleida', 'Lleida', 9, 3918);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (26, 'la-rioja', 'La Rioja', 17, 4124);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (27, 'lugo', 'Lugo', 12, 4238);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (28, 'madrid', 'Madrid', 13, 4356);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (29, 'malaga', 'Málaga', 1, 4523);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (30, 'murcia', 'Murcia', 14, 4588);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (31, 'navarra', 'Navarra', 15, 4815);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (32, 'ourense', 'Ourense', 12, 4925);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (33, 'asturias', 'Asturias', 3, 5009);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (34, 'palencia', 'Palencia', 7, 5137);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (35, 'las-palmas', 'Las Palmas', 5, 5252);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (36, 'pontevedra', 'Pontevedra', 12, 5312);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (37, 'salamanca', 'Salamanca', 7, 5588);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (38, 'santa-cruz-de-tenerife', 'Santa Cruz de Tenerife', 5, 5732);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (39, 'cantabria', 'Cantabria', 6, 5823);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (40, 'segovia', 'Segovia', 7, 6024);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (41, 'sevilla', 'Sevilla', 1, 6152);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (42, 'soria', 'Soria', 7, 6307);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (43, 'tarragona', 'Tarragona', 9, 6499);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (44, 'teruel', 'Teruel', 2, 6721);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (45, 'toledo', 'Toledo', 8, 6934);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (46, 'valencia', 'Valencia', 10, 7219);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (47, 'valladolid', 'Valladolid', 7, 7415);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (48, 'vizcaya', 'Vizcaya', 16, 7489);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (49, 'zamora', 'Zamora', 7, 7821);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (50, 'zaragoza', 'Zaragoza', 2, 8113);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (51, 'ceuta', 'Ceuta', 18, 8115);
+INSERT INTO [dbo].[Province] ([ProvinceID], [Slug], [Description], [AutonomousCommunityID], [CapitalID]) VALUES (52, 'melilla', 'Melilla', 19, 8116);
+
+
+SET IDENTITY_INSERT [dbo].[Province] OFF;
